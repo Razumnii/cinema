@@ -1,0 +1,26 @@
+{
+  "name": "kinoteatr",
+  "version": "1.0.0",
+  "description": "test project for job ",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sergey Razumniy <sergey.razumnii@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Razumnii/Cinema.git"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "json-sql": "^0.5.0",
+    "pg": "^8.7.1"
+  }
+}

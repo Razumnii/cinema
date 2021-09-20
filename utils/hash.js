@@ -1,0 +1,16 @@
+const crypto = require('crypto');
+const {
+  security: { hashSecret },
+} = require('../config');
+
+const create = (str, algo = 'sha256') => {
+  return crypto.createHmac(algo, hashSecret).update(str).digest('hex');
+};
+
+exports.create = create;
+
+exports.equal = async (str, hashCheck) => {
+  const hash = create(str);
+
+  return hash === hashCheck;
+};
