@@ -14,9 +14,7 @@ router.use('/hall', hallRouter)
 router.use('/session', sessionRouter)
 router.use('/ticket', ticketRouter)
 
-
-
-router.get('/index', (req, res) => {
+router.get('/', (req, res) => {
   res.render("index")
 })
 

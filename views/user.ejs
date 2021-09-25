@@ -10,37 +10,29 @@
 </head>
 
 <body>
-	<header class="header">
-		<div class="header__section">
-			<div class="header__logo">
-				<a class="header__logo" href="index" rel="nofollow">
-					<img src="/public/img/logo.png" height="100px" alt="logo" title="logo">
-				</a>
-			</div>
+	<%- include('./layout/header.ejs') %>
+
+		<!-- ФОРМА ЛОГИНА  -->
+		<div class="center">
+			<h1>Login</h1>
+			<form method="post">
+				<div class="txt_field">
+					<input type="text" required>
+					<span></span>
+					<label>Username</label>
+				</div>
+				<div class="txt_field">
+					<input type="password" required>
+					<span></span>
+					<label>Password</label>
+				</div>
+				<div class="pass">Forgot Password?</div>
+				<input type="submit" value="Login">
+				<div class="signup_link">
+					Not a member? <a href="#">Signup</a>
+				</div>
+			</form>
 		</div>
-	</header>
-	<hr style="background-color: #fff">
-	<!-- ФОРМА ЛОГИНА  -->
-	<div class="center">
-		<h1>Login</h1>
-		<form method="post">
-			<div class="txt_field">
-				<input type="text" required>
-				<span></span>
-				<label>Username</label>
-			</div>
-			<div class="txt_field">
-				<input type="password" required>
-				<span></span>
-				<label>Password</label>
-			</div>
-			<div class="pass">Forgot Password?</div>
-			<input type="submit" value="Login">
-			<div class="signup_link">
-				Not a member? <a href="#">Signup</a>
-			</div>
-		</form>
-	</div>
 
 </body>
 
