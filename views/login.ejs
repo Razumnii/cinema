@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cinema | Sing in</title>
+    <link href="/public/css/global.css" rel="stylesheet" type="text/css" />
+    <link href="/public/css/login.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <%- include('./layout/header.ejs') %>
+
+    <main>
+      <!-- ФОРМА ЛОГИНА  -->
+      <div class="login">
+        <h1>Sign in</h1>
+        <form class="login__form" method="post" action="login">
+          <div class="login__block">
+            <input type="text" name="email" required />
+            <span></span>
+            <label>Email</label>
+          </div>
+          <div class="login__block">
+            <input type="password" name="password" required />
+            <span></span>
+            <label>Password</label>
+          </div>
+          <input type="submit" value="Submit" />
+          <div class="signup_link">Not a member? <a href="#">Signup</a></div>
+        </form>
+      </div>
+    </main>
+
+    <script src="/public/js/global.js"></script>
+		<script src="/public/js/login.js"></script>
+  </body>
+</html>
