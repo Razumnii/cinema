@@ -76,9 +76,9 @@ body {
   display: inline-table;
 }
 
-/* user-filter__email */
-/* user-filter__status */
-/* user-filter__ts_create */
+/* filter__email */
+/* filter__status */
+/* filter__ts_create */
 
 
 /* user-item__email  */
@@ -131,7 +131,7 @@ body {
   background-color: #fff;
 }
 
-.user-filter__action,
+.filter__action,
 .user-item__action {
   text-align: center;
 }
