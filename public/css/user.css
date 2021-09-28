@@ -13,7 +13,11 @@ body {
   border-radius: 4px;
 }
 .user__header {
+  padding-top: 10px;
   height: 70px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .user__body {
@@ -75,7 +79,6 @@ body {
 /* user-filter__email */
 /* user-filter__status */
 /* user-filter__ts_create */
-/* user-filter__ts_login  */
 
 
 /* user-item__email  */
@@ -86,7 +89,6 @@ body {
   width: 100%;
 }
 /* user-item__ts_create  */
-/* user-item__ts_login  */
 
 .user-item__action {
   position: relative;

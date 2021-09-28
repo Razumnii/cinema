@@ -23,6 +23,7 @@ async function getUsers() {
     if (Array.isArray(json)) {
       initTable(json);
     }
+
   } catch (e) {
     return PopNoty({ type: 'error', message: e.message });
   }
@@ -31,16 +32,14 @@ async function getUsers() {
 function initTable(userArr) {
   const table = document.querySelector('.user__list tbody');
 
-  table.querySelectorAll('.user__item').forEach(tr => tr.parentNode.removeChild(tr));
+  table.innerHTML = ''
 
   if (userArr < 1) {
     return (table.innerHTML += '<div style="text-align: center;margin: 0 auto;">Нет данных</div>');
   }
 
   userArr.forEach((obj, index) => {
-    let { id, name, email, status, ts_create, ts_login } = obj;
-
-    ts_login = ts_login ? moment(ts_login).format('YYYY-MM-DD HH:mm') : 'Did not go';
+    let { id, email, status, ts_create } = obj;
 
     const tr = document.createElement('tr');
     tr.classList.add('user__item');
@@ -49,7 +48,6 @@ function initTable(userArr) {
     tr.dataset.id = id;
     tr.dataset.content = JSON.stringify(obj);
 
-    tr.innerHTML += `<td class="user-item__id"><input name="id" type="text" value="${id}" title="${id}" disabled></td>`;
     tr.innerHTML += `<td class="user-item__email"><input name="email" type="text" value="${email}" title="${email}" disabled></td>`;
     tr.innerHTML += `
     <td class="user-item__status">
@@ -62,10 +60,10 @@ function initTable(userArr) {
     </td>
     `;
 
+    tr.innerHTML += `<td class="user-item__password"> <input name="password" placeholder="Password" type="text" disabled></td>`;
     tr.innerHTML += `<td class="user-item__ts_create" name="ts_create">${moment(ts_create).format(
       'YYYY-MM-DD HH:mm'
     )}</td>`;
-    tr.innerHTML += `<td class="user-item__ts_login" name="ts_login">${ts_login}</td>`;
 
     let userItemAction = document.createElement('td');
     userItemAction.classList.add('user-item__action');
@@ -97,6 +95,13 @@ function initTable(userArr) {
     userActionSave.innerHTML = 'save';
     userActionList.appendChild(userActionSave);
 
+    let userActionDelete = document.createElement('li');
+    userActionDelete.classList.add('user-action__item');
+    userActionDelete.classList.add('user-action__delete');
+    userActionDelete.addEventListener('click', deleteUserSingle);
+    userActionDelete.innerHTML = 'delete';
+    userActionList.appendChild(userActionDelete);
+
     table.insertAdjacentElement('beforeend', tr);
   });
 }
@@ -115,24 +120,27 @@ function toggleActionList(e) {
   }
 }
 
-function editUserSingle(e) {
+function editUserSingle() {
   const itemIndex = this.parentElement.dataset.index;
   const itemList = document.querySelectorAll('.user__item');
   let item = itemList[itemIndex];
 
   const emailInput = item.querySelector('[name=email]');
   const statusSelect = item.querySelector('[name=status]');
+  const passwordInput = item.querySelector('[name=password]');
 
   if (item.classList.contains('user-item_edit')) {
     item.classList.remove('user-item_edit');
 
     emailInput.setAttribute('disabled', true);
     statusSelect.setAttribute('disabled', true);
+    passwordInput.setAttribute('disabled', true);
   } else {
     item.classList.add('user-item_edit');
 
     emailInput.removeAttribute('disabled');
     statusSelect.removeAttribute('disabled');
+    passwordInput.removeAttribute('disabled');
   }
 }
 
@@ -144,24 +152,27 @@ async function saveUserSingle(e) {
 
   const emailInput = item.querySelector('[name=email]');
   const statusSelect = item.querySelector('[name=status]');
+  const passwordInput = item.querySelector('[name=password]');
 
   const emailInputValue = emailInput.value;
   const statusSelectValue = parseInt(statusSelect.value);
+  const passwordInputValue = passwordInput.value;
 
   const { id, email, status } = JSON.parse(item.dataset.content);
 
-  if (emailInputValue === email && statusSelectValue === status) {
+  if (emailInputValue === email && statusSelectValue === status && !passwordInputValue) {
     this.parentElement.classList.remove('user-action__list_active');
     return PopNoty({ type: 'alert', message: 'Сохранение отменено, данные остались в изначальном виде' });
   }
 
-  let obj = { id };
+  let obj = {};
 
   if (email !== emailInputValue) obj.email = emailInputValue;
   if (status !== statusSelectValue) obj.status = statusSelectValue;
+  if (passwordInputValue) obj.password = passwordInputValue;
 
   try {
-    const res = await fetch('/user', {
+    const res = await fetch(`/user/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -179,13 +190,15 @@ async function saveUserSingle(e) {
       PopNoty({ type: 'alert', message: json.message });
     }
 
-    if (json.id) {
+    if (json) {
       this.parentElement.classList.remove('user-action__list_active');
       if (item.classList.contains('user-item_edit')) {
         item.classList.remove('user-item_edit');
 
         emailInput.setAttribute('disabled', true);
         statusSelect.setAttribute('disabled', true);
+        passwordInput.value = '';
+        passwordInput.setAttribute('disabled', true);
 
         let content = JSON.parse(item.dataset.content);
 
@@ -195,7 +208,44 @@ async function saveUserSingle(e) {
         item.dataset.content = JSON.stringify(content);
       }
 
-      PopNoty({ type: 'alert', message: `Пользователь с id ${json.id} был изменён` });
+      PopNoty({ type: 'alert', message: `Пользователь с id ${id} был изменён` });
+    }
+  } catch (e) {
+    return PopNoty({ type: 'error', message: e.message });
+  }
+}
+
+async function deleteUserSingle(e) {
+  const itemIndex = this.parentElement.dataset.index;
+  const itemList = document.querySelectorAll('.user__item');
+  const item = itemList[itemIndex];
+
+  const {id} = item.dataset;
+
+  console.log(id);
+
+  try {
+    const res = await fetch(`/user/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const json = await res.json();
+
+    if (res.status > 399) {
+      return PopNoty({ type: 'alert', message: json.message });
+    }
+
+    if (json.message) {
+      PopNoty({ type: 'alert', message: json.message });
+    }
+
+    if (json) {
+      item.parentNode.removeChild(item)
+
+      PopNoty({ type: 'alert', message: `Пользователь с id ${id} был удалён` });
     }
   } catch (e) {
     return PopNoty({ type: 'error', message: e.message });
