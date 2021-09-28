@@ -1,5 +1,5 @@
 const express = require('express')
-console.log('fuck');
+
 const Config = require('./config')
 const Router = require('./routers')
 
