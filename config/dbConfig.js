@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
 	host: '127.0.0.1',
 	database: 'cinema',
