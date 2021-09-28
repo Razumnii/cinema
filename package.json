@@ -10,7 +10,7 @@
   "author": "Sergey Razumniy <sergey.razumnii@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Razumnii/Cinema.git"
+    "url": "https://github.com/Razumnii/cinema.git"
   },
   "license": "ISC",
   "devDependencies": {
