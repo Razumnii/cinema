@@ -3,5 +3,6 @@ module.exports = {
 	film: require('./filmController'),
 	session: require('./sessionController'),
 	hall: require('./hallController'),
-	ticket: require('./ticketController')
+	ticket: require('./ticketController'),
+	security: require('./securityController'),
 }

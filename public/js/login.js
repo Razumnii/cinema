@@ -1,11 +1,22 @@
-document.querySelector('[name=email]').addEventListener('focus', function () {
-  this.setAttribute('placeholder', 'test@example.com');
+document.querySelector("[type=submit]").addEventListener("click", async function (event) {
+	event.preventDefault();
+	console.log("Кнопка нажата.");
+
+	const user = {
+		email: document.querySelector('[name=email]').value,
+		password: document.querySelector('[name=password]').value
+	};
+
+	const response = await fetch('/security/login', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json;charset=utf-8'
+		},
+		body: JSON.stringify(user)
+	});
+
+	const result = await response.json();
+	alert(result.message);
 });
 
-document.querySelector('[name=email]').addEventListener('blur', function () {
-  this.removeAttribute('placeholder');
-});
 
-document.querySelector('[type=submit]').addEventListener('click', function (e) {
-  // e.preventDefault();
-});

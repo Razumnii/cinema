@@ -9,7 +9,7 @@ const create = (str, algo = 'sha256') => {
 
 exports.create = create;
 
-exports.equal = async (str, hashCheck) => {
+exports.equal = (str, hashCheck) => {
   const hash = create(str);
 
   return hash === hashCheck;
