@@ -1,7 +1,7 @@
 const { ctrl } = require('./template/baseController');
 const { User } = require('../models');
-const Utils = require('../utils');
-const { hash } = require('../utils');
+const Utils = require('../service');
+const { hash } = require('../service');
 
 exports.getList = ctrl(async () => {
   const { rows } = await User.find();

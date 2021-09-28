@@ -1,6 +1,6 @@
 const { ctrl } = require('./template/baseController');
 const { User } = require('../models');
-const { hash, token } = require('../utils');
+const { hash, token } = require('../service');
 
 
 exports.login = ctrl(async (req, next) => {

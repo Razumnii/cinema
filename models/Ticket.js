@@ -1,5 +1,5 @@
 const jsql = require('json-sql')({ namedValues: false });
-const { pg } = require('../utils');
+const { pg } = require('../service');
 const table = 'ticket';
 
 exports.find = (condition = {}, options = {}) => {

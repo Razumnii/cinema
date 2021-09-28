@@ -1,6 +1,6 @@
 const { ctrl } = require('./template/baseController');
 const { Film } = require('../models');
-const Utils = require('../utils');
+const Utils = require('../service');
 
 exports.getList = ctrl(async () => {
 	const { rows } = await Film.find();
