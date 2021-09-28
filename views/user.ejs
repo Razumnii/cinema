@@ -1,0 +1,46 @@
+<%- include('./layout/head.ejs') %>
+
+<%- include('./layout/defaultStyle.ejs') %>
+
+	<link href="/public/css/user.css" rel="stylesheet" type="text/css" />
+	</head>
+
+	<body>
+		<%- include('./layout/header.ejs') %>
+
+
+		<main>
+			<div class="container">
+				<div class="user">
+					<div class="user__wrapper">
+						<div class="user__header">
+							Пользователи
+						</div>
+						<div class="user__body">
+							<table class="user__list" cellspacing="1">
+								<thead>
+									<tr class="user__filter user-filter">
+										<td class="user-filter__id">ID</td>
+										<td class="user-filter__email">Email</td>
+										<td class="user-filter__status">Status</td>
+										<td class="user-filter__ts_create">Password</td>
+										<td class="user-filter__action">Created</td>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+						<div class="user__footer"></div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+
+		<%- include('./layout/footer.ejs') %>
+		<%- include('./layout/defaultScript.ejs') %>
+
+		<script src="/public/js/user.js"></script>
+	</body>
+
+	</html>

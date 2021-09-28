@@ -1,0 +1,139 @@
+body {
+  background-color: #e5e5e5;
+}
+
+.user {
+  padding: 100px 0;
+  width: 100%;
+  box-shadow: 2 2px #dcdcdc;
+}
+.user__wrapper {
+  box-shadow: 0 0 2px black;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+.user__header {
+  height: 70px;
+}
+
+.user__body {
+  min-height: 700px;
+}
+
+.user__list {
+  width: 100%;
+  overflow: auto;
+  background-color: #d9d9d9;
+}
+
+.user__filter {
+  background-color: #fff;
+  color: #424e64;
+}
+
+.user__filter td {
+  padding: 10px 15px 8px;
+}
+
+.user__item {
+  background-color: #fff;
+  color: #6e6d6d;
+}
+
+.user__item:nth-child(even) > td {
+  background-color: #eee;
+}
+
+.user-item td {
+  padding: 14px 15px;
+}
+
+.user__item input {
+  box-sizing: border-box;
+  border: 2px solid #2e87cc;
+  padding: 5px 7px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.user__item input:focus {
+  border-color: #19364d;
+}
+
+.user__item [disabled] {
+  border-color: transparent;
+  color: #2a7ab8;
+  background-color: transparent;
+}
+
+.user__item i {
+  align-self: center;
+  color: #287ab8;
+  display: inline-table;
+}
+
+/* user-filter__email */
+/* user-filter__status */
+/* user-filter__ts_create */
+/* user-filter__ts_login  */
+
+
+/* user-item__email  */
+.user-item__email input {
+  width: 100%;
+}
+.user-item__status select {
+  width: 100%;
+}
+/* user-item__ts_create  */
+/* user-item__ts_login  */
+
+.user-item__action {
+  position: relative;
+}
+
+.user-action__list {
+  list-style: none;
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 90%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  border-radius: 5px;
+  background-color: #e0d8d8;
+  border: 1px solid #2a7ab8;
+}
+
+.user-action__list_active {
+  display: block;
+}
+
+.user-action__item {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.user-action__item:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.user-action__item:last-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.user-action__item:hover {
+  color: #2a7ab8;
+  background-color: #fff;
+}
+
+.user-filter__action,
+.user-item__action {
+  text-align: center;
+}
+
+.user-item__action i {
+  cursor: pointer;
+}

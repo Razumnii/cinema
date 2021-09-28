@@ -6,6 +6,12 @@ const hallRouter = require('./hallRouter')
 const sessionRouter = require('./sessionRouter')
 const ticketRouter = require('./ticketRouter')
 const securityRouter = require('./securityRouter')
+const pageRouter = require('./pageRouter')
+
+
+router.get('/', (req, res) => {
+  res.render("index")
+})
 
 
 router.use('/film', filmRouter)
@@ -14,19 +20,9 @@ router.use('/hall', hallRouter)
 router.use('/session', sessionRouter)
 router.use('/ticket', ticketRouter)
 router.use('/security', securityRouter)
+router.use('/page', pageRouter)
 
 
-router.get('/', (req, res) => {
-  res.render("index")
-})
-
-router.get('/login', (req, res) => {
-  res.render("login")
-})
-
-router.get('/page/film', (req, res) => {
-  res.render("film")
-})
 
 router.use((req, res) => {
   const message = `Not found for url ${req.url}`
