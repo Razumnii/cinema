@@ -224,6 +224,19 @@ body {
   line-height: 10px;
 }
 
+.menu_soc_item {
+	display: flex;
+	align-items: center;
+	font-size: 12px;
+	text-decoration: none;
+	margin-bottom: 8px;
+}
+
+.menu_soc_item svg {
+  margin-right: 8px;
+}
+
+
 /* Окно при нажатии на которое пропадет бургер меню(center).*/
 .burger-menu__overlay {
   display: none;
