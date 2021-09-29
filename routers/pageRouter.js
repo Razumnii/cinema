@@ -1,15 +1,23 @@
 const router = require('express').Router();
 
+router.get('/', (req, res) => {
+  const { user } = req;
+  res.render('index', { user });
+});
+
 router.get('/login', (req, res) => {
-  res.render('login');
+  const { user } = req;
+  res.render('login', { user });
 });
 
-router.get('/user', (req, res) => {
-  res.render('user');
+router.get('/users', (req, res) => {
+  const { user } = req;
+  res.render('user', { user });
 });
 
-router.get('/film', (req, res) => {
-  res.render('film');
+router.get('/films', (req, res) => {
+  const { user } = req;
+  res.render('film', { user });
 });
 
 module.exports = router;

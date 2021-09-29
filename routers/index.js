@@ -1,41 +1,41 @@
-const router = require('express').Router()
+const router = require('express').Router();
 
-const filmRouter = require('./filmRouter')
-const userRouter = require('./userRouter')
-const hallRouter = require('./hallRouter')
-const sessionRouter = require('./sessionRouter')
-const ticketRouter = require('./ticketRouter')
-const securityRouter = require('./securityRouter')
-const pageRouter = require('./pageRouter')
+const filmRouter = require('./filmRouter');
+const userRouter = require('./userRouter');
+const hallRouter = require('./hallRouter');
+const sessionRouter = require('./sessionRouter');
+const ticketRouter = require('./ticketRouter');
+const securityRouter = require('./securityRouter');
+const pageRouter = require('./pageRouter');
+const { auth } = require('../middleware');
+const { checkUserSignin } = auth;
 
+router.use('/security', securityRouter);
 
-router.get('/', (req, res) => {
-  res.render("index")
-})
-
-
-router.use('/film', filmRouter)
-router.use('/user', userRouter)
-router.use('/hall', hallRouter)
-router.use('/session', sessionRouter)
-router.use('/ticket', ticketRouter)
-router.use('/security', securityRouter)
-router.use('/page', pageRouter)
+router.use('*', checkUserSignin);
 
 
+
+router.use('/film', filmRouter);
+router.use('/user', userRouter);
+router.use('/hall', hallRouter);
+router.use('/session', sessionRouter);
+router.use('/ticket', ticketRouter);
+
+router.use('/', pageRouter);
 
 router.use((req, res) => {
-  const message = `Not found for url ${req.url}`
+  const message = `Not found for url ${req.url}`;
   console.error(message);
-  res.json({ message })
-})
+  res.json({ message });
+});
 
 router.use((err, req, res, next) => {
   console.error(err);
 
-  const { status = 400, message = 'Undefined error' } = err
+  const { status = 400, message = 'Undefined error' } = err;
 
-  res.status(status).json({ message })
-})
+  res.status(status).json({ message });
+});
 
-module.exports = router
+module.exports = router;

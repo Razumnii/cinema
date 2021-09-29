@@ -1,6 +1,6 @@
 module.exports = {
 	hash: require('./hashSevice'),
 	pg: require('./pgSevice'),
-	token: require('./tokenSevice'),
+	jwt: require('./jwtSevice'),
 	validator: require('./validatorSevice'),
 }

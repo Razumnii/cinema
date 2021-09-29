@@ -1,210 +1,240 @@
 /* ОБНУЛЕНИЕ! */
 * {
-	margin: 0;
-	padding: 0;
-	border: 0;
- }
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
 
- *,
- *:before,
- *:after {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
- }
- :focus,
- :active {
-	outline: none;
- }
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
 
- a:focus,
- a:active {
-	outline: none;
- }
+a:focus,
+a:active {
+  outline: none;
+}
 
- html,
- body {
-	height: 100%;
-	min-width: 320px;
- }
+html,
+body {
+  height: 100%;
+  min-width: 320px;
+}
 
- input,
- button,
- textarea {
-	font-family: inherit;
- }
+input,
+button,
+textarea {
+  font-family: inherit;
+}
 
- table {
-	 width: 100%;
-	 border-collapse: collapse;
- }
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
- a {
-	color: #ee3439;
-	text-decoration: none;
- }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
- body {
-	width: 100%;
-	color: #363636;
-	font-size: 16px;
-	font-weight: 400;
- }
+body {
+  width: 100%;
+  color: #363636;
+  font-size: 16px;
+  font-weight: 400;
+  /* font-family: Styrene A LC App,GothamPro; */
+} /* TODO - Найти способ скачивать шрифты и использовать в вверхнем комментарии */
 
- .container {
+.container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
 /* HEADER */
 
-
-
 .header__section {
-	display: flex;
-	justify-content: space-between;
-	background-color: #2a2a2a;
-	 height: 100px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #2a2a2a;
+  height: 100px;
+  color: #fff;
 }
 .header__logo {
-	display: block;
-    z-index: 30;
-    width: auto;
-   position: relative;
-	align-self: center;
-	flex: 0 1 1000px;
+  flex: 1;
+  width: auto;
+  align-self: center;
 }
-.header__signin {
-	float: right;
-    padding: 15px 12px;
-    height: 90px;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    line-height: 1;
-    color: #fff;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    text-decoration: none;
-    position: relative;
-    box-sizing: border-box;
-	 font-family: "Styrene A LC App",GothamPro,sans-serif;
+
+.logo__link {
 }
-.header .header__signin::after {
-	content: '';
-	width: 2px;
-	height: 36px;
-	background: rgba(255,255,255,.2);
-	position: absolute;
-	left: 0;
-	top: calc(50% - 18px);
+.logo__img {
+  height: 60px;
 }
+
+.header__name {
+  flex: 0 1 content;
+  text-align: center;
+  padding: 35px 10px;
+}
+
+.header__signin,
+.header__signout {
+  flex: 0 1 content;
+  padding: 15px 12px;
+  height: 90px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 1;
+  color: inherit;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-decoration: none;
+  position: relative;
+  box-sizing: border-box;
+  font-family: 'Styrene A LC App', GothamPro, sans-serif;
+}
+
+.header__signin img,
+.header__signout svg {
+  display: block;
+  margin-left: 16px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.225s;
+}
+.header__signin:hover img,
+.header__signout:hover svg {
+  background-color: red;
+}
+
 /* MENU BURGER */
+
+.burger__menu {
+  width: 100px;
+}
+
 .burger-menu__button {
-	display: block;
-	position: relative;
-	top: 10px;
-	left: 20px;
-	z-index: 30;
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	background-color: #2a2a2a;
+  display: block;
+  position: relative;
+  top: 10px;
+  left: 20px;
+  z-index: 30;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #2a2a2a;
 }
 .burger-menu__button:hover {
-	filter: brightness(0.8);
+  filter: brightness(0.8);
 }
 .burger-menu__lines,
 .burger-menu__lines::after,
 .burger-menu__lines::before {
-	position: absolute;
-	width: 30px;
-	height: 3px;
-	background-color: #fff;
+  transition: 0.3s;
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
 }
 .burger-menu__lines {
-	top: 47%;
-	left: 25%;
-	transform: translate (-50%, -50%);
+  top: 47%;
+  left: 25%;
+  transform: translate (-50%, -50%);
 }
 .burger-menu__lines::before {
-	content: "";
-	top: -12px;
+  content: '';
+  top: -12px;
 }
 .burger-menu__lines::after {
-	content: "";
-	top: 12px;
+  content: '';
+  top: 12px;
 }
 .burger-menu_active .burger-menu__lines {
-	background-color: transparent;
+  background-color: transparent;
 }
 .burger-menu_active .burger-menu__lines::before {
-	top: 0;
-	transform: rotate(45deg);
+  top: 0;
+  transform: rotate(45deg);
 }
 .burger-menu_active .burger-menu__lines::after {
-	top: 0;
-	transform: rotate(-45deg);
+  top: 0;
+  transform: rotate(-45deg);
 }
+.burger-menu__warapper {
+  width: 322px;
+  transition: 0.2s;
+  top: 0;
+  padding: 110px 16px 60px 52px;
+  position: fixed;
+  z-index: 20;
+  height: 100%;
+  background-color: #221f1f;
+  overflow: hidden;
+  left: -100%;
+}
+
 .burger-menu__nav {
-	padding-top: 95px;
-	position: fixed;
-	z-index: 20;
-	display: flex;
-	flex-flow: column;
-	height: 100%;
-	background-color: #2a2a2a;
-	overflow: hidden;
-	left: -100%;
+  color: #eaeaea;
+  overflow-y: auto;
+  height: 70vh;
+  display: flex;
+  flex-flow: column;
 }
-.burger-menu_active .burger-menu__nav {
-	left: 0;
+
+.burger-menu_active .burger-menu__warapper {
+  left: 0;
 }
+
 .burger-menu__link {
-	padding: 14px;
-	font-family: "Styrene A LC App",GothamPro,sans-serif;
-	font-size: 20px;
-	text-decoration: none;
-	text-transform: uppercase;
-	letter-spacing: 3px;
-	color: #fff;
+  line-height: 26px;
+  font-size: 26px; /* 22px */
+  transition: 0.18s;
+  margin-bottom: 20px;
+  font-size: 20px;
+  letter-spacing: 3px;
 }
+
 .burger-menu__link:hover {
-	filter: brightness(0.9);
+  filter: brightness(0.9);
+  color: #a0a0b1;
 }
 /* Menu Insta, Youtube, Facebook */
 .menu-block {
-	color: rgba(255,255,255,.5);
-	text-transform: uppercase;
-   margin: 10px;
-   padding: 5px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  margin-top: 32px;
+}
+
+.menu-block-heading {
+  color: hsla(0, 0%, 100%, 0.5);
+  margin-bottom: 12px;
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 10px;
 }
 
 /* Окно при нажатии на которое пропадет бургер меню(center).*/
 .burger-menu__overlay {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 10;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
 }
 .burger-menu_active .burger-menu__overlay {
-	display: block;
-	background-color: rgba (0,0,0, 0.1);
+  display: block;
+  background-color: rgba (0, 0, 0, 0.1);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

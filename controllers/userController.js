@@ -41,7 +41,7 @@ exports.create = ctrl(async req => {
 
 exports.update = ctrl(async req => {
   const { id } = req.params;
-  const { email, password, status } = req.body;
+  let { email, password, status } = req.body;
 
   const userCheck = await User.find({ id });
 
@@ -54,10 +54,12 @@ exports.update = ctrl(async req => {
   if (email) {
     modifier.email = email;
   }
+
   if (status) {
     modifier.status = status;
   }
   if (password) {
+    email = email || userCheck.rows[0].email;
     modifier.hash = Utils.hash.create(email + password);
   }
 

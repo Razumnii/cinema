@@ -21,6 +21,16 @@ function burgerMenu() {
 }
 burgerMenu();
 
+
+document.querySelector('.header__signout')?.addEventListener('click', () => {
+  document.cookie = 'accessToken='
+  document.location.reload()
+})
+
+
+
+
+
 /**
  * @param {string} message - Just message
  * @param {string} type - info*|success|warning|error
