@@ -19,7 +19,7 @@ exports.getSingle = ctrl(async req => {
 });
 
 exports.create = ctrl(async req => {
-	const { name, premier, rating, time } = req.body;
+	const { name, premier, description, time } = req.body;
 
 	const filmCheck = await Film.find({ name });
 
@@ -27,14 +27,14 @@ exports.create = ctrl(async req => {
 		throw { message: 'such a film already exists' };
 	}
 
-	const { rows } = await Film.create({ name, premier, rating, time });
+	const { rows } = await Film.create({ name, premier, description, time });
 
 	return rows[0];
 });
 
 exports.update = ctrl(async req => {
+	const { name, premier, description, time } = req.body;
 	const { id } = req.params;
-	const { name, premier, rating, time } = req.body;
 
 	const filmCheck = await Film.find({ id });
 
@@ -50,8 +50,8 @@ exports.update = ctrl(async req => {
 	if (premier) {
 		modifier.premier = premier;
 	}
-	if (rating) {
-		modifier.rating = rating;
+	if (description) {
+		modifier.description = description;
 	}
 	if (time) {
 		modifier.time = time;

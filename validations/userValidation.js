@@ -34,6 +34,9 @@ exports.create = (req, res, next) => {
 exports.update = (req, res, next) => {
   try {
     const { email, password, status } = req.body;
+    const { id } = req.params
+
+    isInteger(id, 'not valid param user id')
 
     if (email) {
       isEmail(email);
