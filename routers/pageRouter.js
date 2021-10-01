@@ -7,22 +7,27 @@ router.get('/', (req, res) => {
   res.render('index', { user });
 });
 
+router.get('/about', (req, res) => {
+  const { user } = req;
+  res.render('about', { user });
+});
+
 router.get('/login', (req, res) => {
   const { user } = req;
   res.render('login', { user });
 });
 
-router.get('/users', Middleware.auth.checkStatus(10), (req, res) => {
+router.get('/user', Middleware.auth.checkStatus(10), (req, res) => {
   const { user } = req;
-  res.render('users', { user });
+  res.render('user', { user });
 });
 
-router.get('/films', Middleware.auth.checkStatus(10), (req, res) => {
+router.get('/film', Middleware.auth.checkStatus(10), (req, res) => {
   const { user } = req;
-  res.render('films', { user });
+  res.render('film', { user });
 });
 
-router.get('/films/:id', (req, res) => {
+router.get('/film/:id', (req, res) => {
 
 });
 

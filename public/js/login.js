@@ -6,7 +6,7 @@ document.querySelector('[type=submit]').addEventListener('click', async function
     password: document.querySelector('[name=password]').value,
   };
 
-  const response = await fetch('/security/login', {
+  const response = await fetch('/api/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',

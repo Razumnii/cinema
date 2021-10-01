@@ -13,7 +13,7 @@ const owlCarousel = document.querySelector('.owl-carousel');
 getFilmList();
 async function getFilmList() {
   try {
-    const res = await fetch('/film', {
+    const res = await fetch('/api/film', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

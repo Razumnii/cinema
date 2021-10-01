@@ -1,7 +1,7 @@
 getFilms();
 async function getFilms() {
   try {
-    const res = await fetch('/film', {
+    const res = await fetch('/api/film', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -190,7 +190,7 @@ async function saveFilmSingle(e) {
   if (description !== descriptionTextareaValue) obj.description = descriptionTextareaValue;
 
   try {
-    const res = await fetch(`/film/${id}`, {
+    const res = await fetch(`/api/film/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -241,7 +241,7 @@ async function deleteFilmSingle(e) {
   console.log(id);
 
   try {
-    const res = await fetch(`/film/${id}`, {
+    const res = await fetch(`/api/film/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

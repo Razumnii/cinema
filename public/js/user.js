@@ -1,7 +1,7 @@
 getUsers();
 async function getUsers() {
   try {
-    const res = await fetch('/user', {
+    const res = await fetch('/api/user', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -172,7 +172,7 @@ async function saveUserSingle(e) {
   if (passwordInputValue) obj.password = passwordInputValue;
 
   try {
-    const res = await fetch(`/user/${id}`, {
+    const res = await fetch(`/api/user/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -225,7 +225,7 @@ async function deleteUserSingle(e) {
   console.log(id);
 
   try {
-    const res = await fetch(`/user/${id}`, {
+    const res = await fetch(`/api/user/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

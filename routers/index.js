@@ -10,17 +10,17 @@ const pageRouter = require('./pageRouter');
 const { auth } = require('../middleware');
 const { checkUserSignin } = auth;
 
-router.use('/security', securityRouter);
+router.use('/api', securityRouter);
 
 router.use('*', checkUserSignin);
 
 
 
-router.use('/film', filmRouter);
-router.use('/user', userRouter);
-router.use('/hall', hallRouter);
-router.use('/session', sessionRouter);
-router.use('/ticket', ticketRouter);
+router.use('/api/film', filmRouter);
+router.use('/api/user', userRouter);
+router.use('/api/hall', hallRouter);
+router.use('/api/session', sessionRouter);
+router.use('/api/ticket', ticketRouter);
 
 router.use('/', pageRouter);
 
