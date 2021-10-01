@@ -14,11 +14,20 @@ document.querySelector('[type=submit]').addEventListener('click', async function
     body: JSON.stringify(user),
   });
 
+  const { ok, status } = response;
   const result = await response.json();
 
-  const { ok, status } = response;
+  if (status > 399) {
+    return PopNoty({ type: 'alert', message });
+  }
 
   if (ok) {
-    document.location = '/';
+    console.log(document.location);
+
+    if (document.location.pathname !== '/login' && document.location.pathname !== '/login#') {
+      document.location.reload();
+    } else {
+      document.location = '/';
+    }
   }
 });

@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const Middleware = require('../middleware')
+
 
 router.get('/', (req, res) => {
   const { user } = req;
@@ -10,12 +12,12 @@ router.get('/login', (req, res) => {
   res.render('login', { user });
 });
 
-router.get('/users', (req, res) => {
+router.get('/users', Middleware.auth.checkStatus(10), (req, res) => {
   const { user } = req;
   res.render('users', { user });
 });
 
-router.get('/films', (req, res) => {
+router.get('/films', Middleware.auth.checkStatus(10), (req, res) => {
   const { user } = req;
   res.render('films', { user });
 });

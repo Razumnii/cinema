@@ -24,7 +24,7 @@ burgerMenu();
 
 document.querySelector('.header__signout')?.addEventListener('click', () => {
   document.cookie = 'accessToken='
-  document.location.reload()
+  document.location = '/'
 })
 
 

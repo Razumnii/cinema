@@ -39,4 +39,26 @@ exports.checkUserSignin = async (req, res, next) => {
     next(e);
   }
 };
-exports.checkStatus = (req, res, next) => {};
+exports.checkStatus = accessStatus => (req, res, next) => {
+  try {
+    if (!accessStatus) {
+      return next()
+    }
+
+    const { user } = req;
+
+    if (!user) {
+      return res.render('login')
+    }
+
+    const { status } = user;
+
+    if (status >= accessStatus) {
+      return next()
+    }
+
+    throw { message: 'Not permission'}
+  } catch (e) {
+    next(e)
+  }
+};

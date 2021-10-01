@@ -1,11 +1,11 @@
-const router = require('express').Router()
-const Controller = require('../controllers')
+const router = require('express').Router();
+const Controller = require('../controllers');
+const Middleware = require('../middleware');
 
+router.get('/', Middleware.auth.checkStatus(10), Controller.session.getList);
+router.get('/:id', Middleware.auth.checkStatus(10), Controller.session.getSingle);
+router.post('/', Middleware.auth.checkStatus(10), Controller.session.create);
+router.put('/:id', Middleware.auth.checkStatus(10), Controller.session.update);
+router.delete('/:id', Middleware.auth.checkStatus(10), Controller.session.delete);
 
-router.get('/', Controller.session.getList)
-router.get('/:id', Controller.session.getSingle)
-router.post('/', Controller.session.create)
-router.put('/:id', Controller.session.update)
-router.delete('/:id', Controller.session.delete)
-
-module.exports = router
+module.exports = router;
