@@ -1,0 +1,152 @@
+body {
+  background-color: #e5e5e5;
+}
+
+.film {
+  padding: 100px 0;
+  width: 100%;
+  box-shadow: 2 2px #dcdcdc;
+}
+.film__wrapper {
+  box-shadow: 0 0 2px black;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+.film__header {
+  padding-top: 10px;
+  height: 70px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.film__body {
+  min-height: 700px;
+}
+
+.film__list {
+  width: 100%;
+  overflow: auto;
+  background-color: #d9d9d9;
+}
+
+.film__filter {
+  background-color: #fff;
+  color: #424e64;
+}
+
+.film__filter td {
+  padding: 10px 15px 8px;
+}
+
+.film__item {
+  background-color: #fff;
+  color: #6e6d6d;
+}
+
+.film__item:nth-child(even) > td {
+  background-color: #eee;
+}
+
+.film-item td {
+  padding: 14px 15px;
+}
+
+.film__item input {
+  box-sizing: border-box;
+  border: 2px solid #2e87cc;
+  padding: 5px 7px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.film__item [disabled] {
+	border-color: transparent;
+	color: #2a7ab8;
+	background-color: transparent;
+}
+
+.film__item textarea {
+  box-sizing: border-box;
+  border: 2px solid #2e87cc;
+  padding: 5px 7px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.film__item input:focus {
+  border-color: #19364d;
+}
+
+.film__item [disabled] {
+  border-color: transparent;
+  color: #2a7ab8;
+  background-color: transparent;
+}
+
+.film__item i {
+  align-self: center;
+  color: #287ab8;
+  display: inline-table;
+}
+
+textarea {
+  resize: vertical;
+}
+textarea[disabled] {
+  resize: none;
+}
+
+
+
+.film-item__action {
+  position: relative;
+}
+
+.film-action__list {
+  list-style: none;
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 90%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  border-radius: 5px;
+  background-color: #e0d8d8;
+  border: 1px solid #2a7ab8;
+}
+
+.film-action__list_active {
+  display: block;
+}
+
+.film-action__item {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.film-action__item:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.film-action__item:last-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.film-action__item:hover {
+  color: #2a7ab8;
+  background-color: #fff;
+}
+
+.filter__action,
+.film-item__action {
+  text-align: center;
+}
+
+.film-item__action i {
+  cursor: pointer;
+}
+
+

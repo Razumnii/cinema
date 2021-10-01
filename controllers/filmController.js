@@ -3,75 +3,78 @@ const { Film } = require('../models');
 const Utils = require('../service');
 
 exports.getList = ctrl(async () => {
-	const { rows } = await Film.find();
+  const { rows } = await Film.find();
 
-	return rows;
+  return rows;
 });
 
 exports.getSingle = ctrl(async req => {
-	const { id } = req.params;
-	const { rows } = await Film.find({ id });
+  const { id } = req.params;
+  const { rows } = await Film.find({ id });
 
-	if (!rows[0]) {
-		throw { message: 'film not found' };
-	}
-	return rows[0];
+  if (!rows[0]) {
+    throw { message: 'film not found' };
+  }
+  return rows[0];
 });
 
 exports.create = ctrl(async req => {
-	const { name, premier, description, time } = req.body;
+  const { name, premier, description, time, date } = req.body;
 
-	const filmCheck = await Film.find({ name });
+  const filmCheck = await Film.find({ name });
 
-	if (filmCheck.rowCount) {
-		throw { message: 'such a film already exists' };
-	}
+  if (filmCheck.rowCount) {
+    throw { message: 'such a film already exists' };
+  }
 
-	const { rows } = await Film.create({ name, premier, description, time });
+  const { rows } = await Film.create({ name, premier, description, time, date });
 
-	return rows[0];
+  return rows[0];
 });
 
 exports.update = ctrl(async req => {
-	const { name, premier, description, time } = req.body;
-	const { id } = req.params;
+  const { name, premier, description, time, date } = req.body;
+  const { id } = req.params;
 
-	const filmCheck = await Film.find({ id });
+  const filmCheck = await Film.find({ id });
 
-	if (filmCheck.rowCount < 1) {
-		throw { message: 'Film not found' };
-	}
+  if (filmCheck.rowCount < 1) {
+    throw { message: 'Film not found' };
+  }
 
-	const modifier = {};
+  const modifier = {};
 
-	if (name) {
-		modifier.name = name;
-	}
-	if (premier) {
-		modifier.premier = premier;
-	}
-	if (description) {
-		modifier.description = description;
-	}
-	if (time) {
-		modifier.time = time;
-	}
+  if (name) {
+    modifier.name = name;
+  }
+  if (premier) {
+    modifier.premier = premier;
+  }
+  if (description) {
+    modifier.description = description;
+  }
+  if (time) {
+    modifier.time = time;
+  }
+  if (date) {
+    modifier.time = date;
+  }
 
-	const { rowCount } = await Film.update({ id }, modifier);
+  const { rowCount } = await Film.update({ id }, modifier);
 
-	return Boolean(rowCount);
+  return Boolean(rowCount);
 });
 
 exports.delete = ctrl(async req => {
-	const { id } = req.params;
+  const { id } = req.params;
 
-	const filmCheck = await Film.find({ id });
+  const filmCheck = await Film.find({ id });
 
-	if (filmCheck.rowCount < 1) {
-		throw { message: 'film not found' };
-	}
+  if (filmCheck.rowCount < 1) {
+    throw { message: 'film not found' };
+  }
 
-	const { rowCount } = await Film.destroy({ id });
+  const { rowCount } = await Film.destroy({ id });
 
-	return Boolean(rowCount);
+  return Boolean(rowCount);
 });

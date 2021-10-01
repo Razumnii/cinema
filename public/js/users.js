@@ -35,7 +35,7 @@ function initTable(userArr) {
   table.innerHTML = ''
 
   if (userArr < 1) {
-    return (table.innerHTML += '<div style="text-align: center;margin: 0 auto;">Нет данных</div>');
+    return (table.innerHTML += '<div style="text-align: center;margin: 0 auto;">Not data</div>');
   }
 
   userArr.forEach((obj, index) => {

@@ -1,0 +1,46 @@
+<%- include('./layout/head.ejs') %>
+
+<%- include('./layout/defaultStyle.ejs') %>
+
+	<link href="/public/css/films.css" rel="stylesheet" type="text/css" />
+	</head>
+
+	<body>
+		<%- include('./layout/header.ejs') %>
+
+
+		<main>
+			<div class="container">
+				<div class="film">
+					<div class="film__wrapper">
+						<div class="film__header">
+							Films
+						</div>
+						<div class="film__body">
+							<table class="film__list" cellspacing="1">
+								<thead>
+									<tr class="film__filter filter">
+										<td>Name</td>
+										<td>Time</td>
+										<td>Premier</td>
+										<td>Release date</td>
+										<td>Description</td>
+										<td>Action</td>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+
+		<%- include('./layout/footer.ejs') %>
+		<%- include('./layout/defaultScript.ejs') %>
+
+		<script src="/public/js/films.js"></script>
+	</body>
+
+	</html>

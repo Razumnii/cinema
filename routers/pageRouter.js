@@ -12,12 +12,16 @@ router.get('/login', (req, res) => {
 
 router.get('/users', (req, res) => {
   const { user } = req;
-  res.render('user', { user });
+  res.render('users', { user });
 });
 
 router.get('/films', (req, res) => {
   const { user } = req;
-  res.render('film', { user });
+  res.render('films', { user });
+});
+
+router.get('/films/:id', (req, res) => {
+
 });
 
 module.exports = router;
